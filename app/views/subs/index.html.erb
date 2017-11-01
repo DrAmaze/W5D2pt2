@@ -1,0 +1,12 @@
+<h2>Look at all the SUBS</h2>
+
+<ul>
+  <% @subs.try(:each) do |sub| %>
+    <li>
+      <h5><%= sub.title %></h5>
+      <%= sub.description %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Create a Sub here', new_sub_url %>

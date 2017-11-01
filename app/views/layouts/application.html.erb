@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditOnRails</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+    <% if current_user %>
+      <h6>Whaddup, <%= current_user.username %>!</h6>
+      <%= button_to 'Sign Out', session_url, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign In', new_session_url %>
+      <%= link_to 'Sign Up', new_user_url %>
+    <% end %>
+
+    <ul>
+      <% flash[:errors].try(:each) do |err| %>
+        <li><% err %></li>
+      <% end %>
+    </ul>
+    <%= yield %>
+  </body>
+</html>

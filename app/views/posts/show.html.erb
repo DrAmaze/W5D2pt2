@@ -1,0 +1,22 @@
+<div class="border">
+
+
+  <h2><%= link_to @post.title, post_url(@post) %>
+  by: <%= @post.author.username %></h2>
+
+  <div>
+    <%= @post.content %>
+  </div>
+  <br>
+
+  <b>Subs</b>
+  <ul>
+    <% @post.subs.each do |sub| %>
+      <li><%= link_to sub.name, sub_url(sub) %></li>
+    <% end %>
+  </ul>
+
+
+
+  <%= link_to "Edit", edit_post_url(@post) if @post.author == current_user %>
+</div>
